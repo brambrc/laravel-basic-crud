@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/penggunaCreate', 'PenggunaController@create')->name('penggunaCreate');
+Route::post('/penggunaStore', 'PenggunaController@store')->name('penggunaStore');
+Route::get('/penggunaEdit/{id}', 'PenggunaController@edit')->name('penggunaEdit');
+Route::post('/penggunaUpdate/{id}', 'PenggunaController@update')->name('penggunaUpdate');
+Route::get('/penggunaDelete/{id}', 'PenggunaController@destroy')->name('penggunaDelete');
+

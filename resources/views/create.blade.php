@@ -84,39 +84,36 @@
                 </div>
             @endif
             <br>
-            @php 
-                $pengguna = \App\Pengguna::all();
-            @endphp
             
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{route('penggunaCreate')}}" class="btn btn-primary">Add Data +</a>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">No Handphone</th>
-                            <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($pengguna as $user)
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->no_hp}}</td>
-                            <td>{{$user->jenis_kelamin}}</td>
-                            <td> <a href="{{route('penggunaEdit', ["id" => $user->id ])}}" class="btn btn-warning">Edit</a>
-                                <a href="{{route('penggunaDelete', ["id" => $user->id ])}}" class="btn btn-danger">Delete</a>
-                            </td>
-                          </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
+                   <form action="{{route('penggunaStore')}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nama</label>
+                            <input type="text" class="form-control" placeholder="Masukan Nama" name="nama">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Alamat</label>
+                            <textarea type="text" class="form-control" placeholder="Masukan Alamt" name="alamat"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">No Handphone</label>
+                            <input type="text" class="form-control" placeholder="Masukan No Hp" name="no_hp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Jenis Kelamin</label>
+                           <select class="form-control" name="jenis_kelamin">
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>    
                 </div>
 
             </div>
